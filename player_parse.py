@@ -19,9 +19,8 @@ with open("edges_with_duplicates.csv", mode="w") as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
         for (player1, player2) in list(itertools.combinations(roster, 2)):
-            if (count == 0):
-                writer.writeheader()
-            writer.writerow({'Player1': player1, 'Player2': player2})
+            if (count > 0):
+                writer.writerow({'Player1': player1, 'Player2': player2})
             count += 1
 
 df2 = pd.read_csv('edges_with_duplicates.csv', names=["Player1", "Player2"], skiprows = 1)
